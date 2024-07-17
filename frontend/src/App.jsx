@@ -5,7 +5,7 @@ import Login from './components/Login/Login'
 import UserAndChatList from './components/UserAndChatList/UserAndChatList'
 
 const App = () => {
-  const user = false
+  const user = true
 
   return (
     <>

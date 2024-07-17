@@ -3,10 +3,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 20px;
   background-color: #ffffff;
   width: 435px;
-  height: 80vh;
+  height: 85vh;
   border-radius: 15%;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
@@ -93,5 +93,14 @@
     &:hover{
       background-color: #9b7cdac2;
     }
+  }
+}
+
+@media (max-width: 480px) {
+  .signup{
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    height: 100vh;
   }
 }
