@@ -1,0 +1,31 @@
+.userinfo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  padding: 1em;
+
+  .logout{
+    width: 27px;
+    height: 27px;
+    cursor: pointer;    
+    transition: transform 0.1s;
+  }
+
+  .logout:hover{
+    transform: scale(0.8);
+  }
+
+  .user{
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+
+    img{
+      width: 50px;
+      max-height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }  
+}
