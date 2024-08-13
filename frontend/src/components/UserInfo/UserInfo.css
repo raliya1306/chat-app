@@ -11,6 +11,12 @@
     transition: transform 0.1s;
   }
 
+  .disabled{
+    width: 27px;
+    height: 27px;
+    cursor: not-allowed;    
+  }
+
   .logout:hover{
     transform: scale(0.8);
   }
@@ -24,7 +30,7 @@
       width: 50px;
       max-height: 50px;
       border-radius: 50%;
-      object-fit: cover;
+      object-fit: cover;      
     }
   }  
 }

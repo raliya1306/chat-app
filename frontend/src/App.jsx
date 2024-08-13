@@ -1,24 +1,21 @@
-import Chat from './components/Chat/Chat'
 import Notifications from './components/Notifications/Notifications'
 import Login from './components/Login/Login'
-//import SignUp from './components/SignUp/SignUp'
-import UserAndChatList from './components/UserAndChatList/UserAndChatList'
+import SignUp from './components/SignUp/SignUp'
+import Home from './components/Home/Home'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import { useAuthContext } from './context/AuthContext'
 
 const App = () => {
-  const user = true
-
+  const { authUser } = useAuthContext()
   return (
     <>
-    {user ? (
-      <div className='container'>
-        <UserAndChatList />
-        <Chat />
-      </div>
-    ) : (
-      <Login />     
-    )}
-    <Notifications />    
-    </>    
+    <Routes>
+      <Route path='/' element={authUser ? <Home /> : <Navigate to='/login' />} />
+      <Route path='/login' element={authUser ? <Navigate to='/' /> : <Login />} />
+      <Route path='/signup' element={authUser ? <Navigate to='/' /> : <SignUp />} />
+    </Routes> 
+    <Notifications /> 
+  </>
   )
 }
 

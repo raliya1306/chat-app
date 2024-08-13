@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import './ChatList.css'
 import AddUser from '../AddUser/AddUser'
+import Chats from './Chats'
 
 const ChatList = () => {
   const [addChat, setAddChat] = useState(false)
-
-  console.log(addChat)
 
   return (
     <div className='chatList'>
@@ -16,55 +15,7 @@ const ChatList = () => {
         </div>
         <img src='add-chat.png' alt='' className='add' onClick={() => setAddChat(prev => !prev)} />
       </div>
-      <div className="chatItem">
-        <img src='default-pfp.webp' alt='' />
-        <div className="texts">
-          <span>Claire Bailey</span>
-          <p>Hello</p>
-        </div>
-      </div>
-      <div className="chatItem">
-        <img src='default-pfp.webp' alt='' />
-        <div className="texts">
-          <span>Claire Bailey</span>
-          <p>Hello</p>
-        </div>
-      </div>
-      <div className="chatItem">
-        <img src='default-pfp.webp' alt='' />
-        <div className="texts">
-          <span>Claire Bailey</span>
-          <p>Hello</p>
-        </div>
-      </div>
-      <div className="chatItem">
-        <img src='default-pfp.webp' alt='' />
-        <div className="texts">
-          <span>Claire Bailey</span>
-          <p>Hello</p>
-        </div>
-      </div>
-      <div className="chatItem">
-        <img src='default-pfp.webp' alt='' />
-        <div className="texts">
-          <span>Claire Bailey</span>
-          <p>Hello</p>
-        </div>
-      </div>
-      <div className="chatItem">
-        <img src='default-pfp.webp' alt='' />
-        <div className="texts">
-          <span>Claire Bailey</span>
-          <p>Hello</p>
-        </div>
-      </div>
-      <div className="chatItem">
-        <img src='default-pfp.webp' alt='' />
-        <div className="texts">
-          <span>Claire Bailey</span>
-          <p>Hello</p>
-        </div>
-      </div>
+      <Chats />
       {addChat && <AddUser />}
     </div>
   )

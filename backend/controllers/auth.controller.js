@@ -1,13 +1,29 @@
 const User = require('../models/user')
 const bcrypt = require('bcryptjs')
 const { generateTokenAndSetCookie } = require('../utils/generateToken')
+const multer = require('multer')
+const path = require('path')
+
+// File upload
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'public/images')
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+  }
+})
+
+const upload = multer({
+  storage: storage
+})
 
 const signup = async (req, res) => {
   try {
-    const { username, email, password, confirmPassword, avatar } = req.body
+    const { username, email, password, confirmPassword } = req.body
 
-    if(password !== confirmPassword) {
-      return res. status(400).json({ error: 'Passwords don\'t match' })
+    if (password !== confirmPassword) {
+      return res.status(400).json({ error: 'Passwords don\'t match' })
     }
 
     const user = await User.findOne({ username })
@@ -22,13 +38,19 @@ const signup = async (req, res) => {
       username,
       email,
       password: hash,
-      avatar
+      avatar: req.file.filename
     })
 
-    if(newUser) {
+    if (newUser) {
       generateTokenAndSetCookie(newUser._id, res)
       await newUser.save()
-      res.status(201).json({ message: 'User successfully created' })
+      res.status(201).json({
+        _id: newUser._id,
+        username: newUser.username,
+        email: newUser.email,
+        blocked: newUser.blocked,
+        avatar: newUser.avatar
+      })
     } else {
       res.status(400).json({ error: 'Invalid user data' })
     }
@@ -45,13 +67,19 @@ const login = async (req, res) => {
     const user = await User.findOne({ email })
     const passwordCorrect = await bcrypt.compare(password, user?.password || '')
 
-    if(!user || !passwordCorrect) {
-      return res.status(400).json({ error: 'Invalid username or password' })
+    if (!user || !passwordCorrect) {
+      return res.status(400).json({ error: 'Invalid email or password' })
     }
 
     generateTokenAndSetCookie(user._id, res)
 
-    res.status(200).json({ message: 'Successfully logged in' })
+    res.status(200).json({
+      _id: user._id,
+      username: user.username,
+      email: user.email,
+      blocked: user.blocked,
+      avatar: user.avatar
+    })
 
   } catch (error) {
     console.log(error.message)
@@ -72,6 +100,7 @@ const logout = (req, res) => {
 
 module.exports = {
   signup,
+  upload,
   login,
   logout
 }

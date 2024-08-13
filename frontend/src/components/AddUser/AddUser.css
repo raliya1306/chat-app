@@ -11,9 +11,12 @@
   right: 0;
   margin: auto;
 
+
   form{
     display: flex;
-    gap: 20px;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
 
     input{
       padding: 1em;
@@ -31,13 +34,23 @@
       border: 1px solid #9f5ac7ce;
       cursor: pointer;
     }
+    .close{
+      width: 30px;
+      height: 30px;
+      cursor: pointer;    
+      transition: transform 0.1s;
+    }
+
+    .close:hover{
+      transform: scale(0.8);
+    }
   }
 
   .user{
     margin-top: 1.5em;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 8.5em;
 
     .detail{
       display: flex;

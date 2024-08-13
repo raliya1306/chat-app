@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
-import './Chat.css'
+import './Messages.css'
 import EmojiPicker from 'emoji-picker-react'
 
-const Chat = () => {
+const Messages = () => {
   const [openEmoji, setOpenEmoji] = useState(false)
   const [text, setText] = useState('')
   
@@ -18,7 +18,7 @@ const Chat = () => {
   }
 
   return (
-    <div className='chat'>
+    <div className='message'>
       <div className="top">
         <div className="user">
           <img src='default-pfp.webp' alt='' />
@@ -78,4 +78,4 @@ const Chat = () => {
   )
 }
 
-export default Chat
+export default Messages

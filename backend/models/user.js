@@ -16,7 +16,10 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 5
   },
-  blocked: [],
+  blocked: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }],
   avatar: {
     type: String,
     default: ''
