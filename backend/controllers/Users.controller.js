@@ -10,11 +10,10 @@ const getSidebarUsers = async (req, res) => {
       return p.participants
     })
 
-    const usersArray = allParticipants.map(p => {
-      if(p[0] === currentUserId) {
-        return p[0]
-      }
-      else return p[1]
+    const usersArray = allParticipants.map((p) => {
+      return p.filter((item) => {
+        return !(item.equals(currentUserId))
+      })
     })
 
     const promisesArray = await Promise.all(usersArray.map(async (u) => {

@@ -30,4 +30,8 @@
     border: 1px solid #ccb7e5;
     background-color: #e6d1f2;
   }
+
+  &.selectedChat{
+    background-color: #b19cd8;
+  }
 }

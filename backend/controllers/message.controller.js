@@ -1,5 +1,6 @@
 const Conversation = require('../models/conversation')
 const Message = require('../models/message')
+const { getReceiverSocketId, io } = require('../socket/socket')
 
 const getMessages = async (req, res) => {
   try {
@@ -32,7 +33,6 @@ const sendMessage = async (req, res) => {
       return
     }
 
-
     let conversation = await Conversation.findOne({
       participants: { $all: [senderId, receiverId] }
     })
@@ -48,6 +48,11 @@ const sendMessage = async (req, res) => {
     }
 
     await Promise.all([conversation.save(), newMessage.save()])
+
+    const receiverSocketId = getReceiverSocketId(receiverId)
+    if(receiverSocketId) {
+      io.to(receiverSocketId).emit('newMessage', newMessage)
+    }
 
     res.status(201).json(newMessage)
 

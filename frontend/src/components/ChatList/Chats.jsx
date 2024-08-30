@@ -3,7 +3,7 @@ import Chat from './Chat'
 
 const Chats = () => {
   const { conversations } = useGetConversation()
- 
+
   return (
     <>
       {conversations.map(conversation => (

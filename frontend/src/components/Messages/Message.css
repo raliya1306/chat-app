@@ -1,0 +1,55 @@
+.message{
+  max-width: 80%;
+  display: flex;
+  font-size: 0.95rem;
+  gap: 10px;
+
+  img{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .text{
+    /* flex: 1; */
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    img{
+      width: 100%;
+      height: 300px;
+      display: block;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    p{
+      padding: 0.9em;
+      background-color: #e6d1f2;
+      border-radius: 20px;
+    }
+
+    span{
+      font-size: 0.7rem;
+      align-self: flex-start;
+      color: #7c45e29c;
+      margin: 0 1em;
+    }
+  }
+       
+  &.mine{
+    align-self: flex-end;
+
+    .text{
+      p{
+        background-color: #b19cd8;
+      }
+
+      span{
+        align-self: flex-end;
+      }
+    }
+  }
+}

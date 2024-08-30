@@ -1,12 +1,15 @@
+import useConversation from '../../zustand/useConversation'
 import Messages from '../Messages/Messages'
 import UserAndChatList from '../UserAndChatList/UserAndChatList'
 import './Home.css'
 
 const Home = () => {
-  return (
+  const { selectedConversation } = useConversation()
+
+   return (
     <div className='container'>
-      <UserAndChatList />
-      <Messages />
+      {!selectedConversation && <UserAndChatList />}
+      {selectedConversation && <Messages />}
     </div>
   )
 }
