@@ -12,7 +12,7 @@ const Message = ({ message }) => {
 
   return (
     <div className={`message ${fromCurrentUser ? 'mine' : ''}`}>
-          {!fromCurrentUser && <img src={`http://localhost:3001/images/${selectedConversation?.avatar}` || 'default-pfp.webp'} alt='' />}
+          {!fromCurrentUser && <img src={selectedConversation.blocked.includes(authUser._id) ? 'default-pfp.webp' : `http://localhost:3001/images/${selectedConversation.avatar}` || 'default-pfp.webp'} alt='' />}
           <div className="text">
             <p>{message.message}</p>
             <span>{time}</span>

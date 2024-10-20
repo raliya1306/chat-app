@@ -91,6 +91,16 @@
   .bottom{
     padding: 1em;
 
+    .attach{
+      height: 30px;
+      width: 30px;
+      cursor: pointer;      
+
+      &:disabled {
+        cursor: not-allowed;
+      }
+    }
+
     form{
       width: 100%;
       display: flex;
@@ -108,20 +118,28 @@
         letter-spacing: 0.5px;
         border-radius: 10px;
         font-size: 0.9rem;
+
+        &:disabled {
+          cursor: not-allowed;
+        }
       }
       button{
         border: none;
         background-color: transparent;
       }
   
-      img{
+      .sendButton{
         height: 30px;
         width: 30px;
         cursor: pointer;
         transition: transform 0.1s;
       }
+      .disabled {
+        transition: none;
+        cursor: not-allowed;
+      }
   
-      img:hover{
+      .sendButton:hover{
         transform: scale(0.8);
       }
   
@@ -135,9 +153,7 @@
           right: 0;
         }
       }
-    }
-
-    
+    }    
   }  
 }
 
