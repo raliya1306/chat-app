@@ -1,12 +1,15 @@
 import useGetConversation from '../../hooks/useGetConversation'
 import Chat from './Chat'
 
-const Chats = () => {
+const Chats = ({ search }) => {
   const { conversations } = useGetConversation()
+  const filteredConversations = conversations.filter((c) =>
+  c.username.toLowerCase().includes(search.toLowerCase())
+  )
 
   return (
     <>
-      {conversations.map(conversation => (
+      {filteredConversations.map(conversation => (
           <Chat
             key={conversation._id}
             conversation={conversation}
