@@ -76,3 +76,25 @@
     }
   }
 }
+
+@media (max-width: 480px) {
+  .addUser{
+    padding: 1.5em;
+
+    form{
+      input{
+        padding: 0.5em;
+      }
+
+      button{
+        padding: 0.5em;
+      }
+    }
+
+    .user{
+      button{
+        padding: 0.3em;
+      }
+    }
+  }
+}

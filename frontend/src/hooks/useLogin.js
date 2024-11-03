@@ -11,12 +11,11 @@ const useLogin = () => {
     setLoading(true)
     try {
       const res = await axios.post('/api/auth/login', { email, password })
-      
       localStorage.setItem('user-info', JSON.stringify(res.data))
       setAuthUser(res.data)
-
+      toast.success('Succesfully logged in!') 
     } catch (error) {
-      toast.error(error.response)
+      toast.error(error.response.data.error)
     } finally {
       setLoading(false)
     }

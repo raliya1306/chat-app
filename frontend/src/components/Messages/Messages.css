@@ -146,6 +146,7 @@
       .emoji{
         position: relative;
         display: inline;
+        cursor: pointer;
   
         .emojiPicker{
           position: absolute;

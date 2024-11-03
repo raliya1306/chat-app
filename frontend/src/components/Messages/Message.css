@@ -12,10 +12,13 @@
   }
   
   .text{
-    /* flex: 1; */
+    flex: 1;
+    max-width: fit-content;
     display: flex;
     flex-direction: column;
     gap: 4px;
+    word-wrap: break-word;
+    width: 100%;
 
     img{
       width: 100%;
